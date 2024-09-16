@@ -27,6 +27,12 @@ import { BlurImg, SpinnerProps } from "react-blur-img";
 import Input from "./input";
 import { useState } from "react";
 
+interface ImgSettings {
+  aspectRatio: string;
+  objectFit: React.CSSProperties["objectFit"];
+  objectPosition: string;
+}
+
 const App = () => {
   const images = [
     {
@@ -100,7 +106,7 @@ const App = () => {
     }, 500);
   };
 
-  const [imgSettings, setImgSettings] = useState({
+  const [imgSettings, setImgSettings] = useState<ImgSettings>({
     aspectRatio: "1/1",
     objectFit: "cover",
     objectPosition: "center",
@@ -150,7 +156,8 @@ const App = () => {
                 onChange={(e) =>
                   setImgSettings((prev) => ({
                     ...prev,
-                    objectFit: e.target.value,
+                    objectFit: e.target
+                      .value as React.CSSProperties["objectFit"],
                   }))
                 }
               >

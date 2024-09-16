@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import img1 from "/images/img1.jpg";
 import img2 from "/images/img2.jpg";
@@ -26,6 +25,7 @@ import img9Sm from "/images/img9Sm.jpg";
 import img10Sm from "/images/img10Sm.jpg";
 import img11Sm from "/images/img11Sm.jpg";
 import img12Sm from "/images/img12Sm.jpg";
+import { BlurImg, SpinnerProps } from "./App";
 
 const images = [
   {
@@ -78,11 +78,26 @@ const images = [
   },
 ];
 
+const spinner: SpinnerProps = {
+  width: 40,
+  height: 40,
+  borderTop: "4px dashed red",
+  color: "white",
+  style: "dashed",
+};
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div className="container">
       {images.map((image, key) => (
-        <App key={key} img={image.img} imgSm={image.imgSm} alt={`img-${key}`} />
+        <BlurImg
+          key={key}
+          img={image.img}
+          placeHolder={image.imgSm}
+          alt={`img-${key}`}
+          aspectRatio="16/9"
+          spinner={spinner}
+        />
       ))}
     </div>
   </StrictMode>

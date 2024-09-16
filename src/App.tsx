@@ -22,7 +22,6 @@ import img9Sm from "/images/img9Sm.jpg";
 import img10Sm from "/images/img10Sm.jpg";
 import img11Sm from "/images/img11Sm.jpg";
 import img12Sm from "/images/img12Sm.jpg";
-
 import { BlurImg, SpinnerProps } from "react-blur-img";
 import Input from "./input";
 import { useState } from "react";
@@ -195,10 +194,6 @@ const App = () => {
         <hr />
         <div className="spinner-settings-container"></div>
         <h2>Spinner settings</h2>
-        <p>
-          Set only the border or the borderTop; if you set both parameters, the
-          border will override the borderTop
-        </p>
         <div className="input-container spinner-settings">
           <Input
             initialValue={40}
@@ -221,15 +216,15 @@ const App = () => {
                 setSpinner((prev) => ({ ...prev, style: e.target.value }))
               }
             >
-              <option value="none">None</option>
-              <option value="solid">Solid</option>
               <option value="dotted">Dotted</option>
+              <option value="solid">Solid</option>
               <option value="dashed">Dashed</option>
               <option value="double">Double</option>
               <option value="groove">Groove</option>
               <option value="ridge">Ridge</option>
               <option value="inset">Inset</option>
               <option value="outset">Outset</option>
+              <option value="none">None</option>
               <option value="hidden">Hidden</option>
             </select>
           </label>

@@ -87,12 +87,21 @@ const App = () => {
   const [spinner, setSpinner] = useState<SpinnerProps>({
     height: 40,
     width: 40,
+    borderWidth: "4px",
+    color: "black",
+    style: "dotted",
   });
   const [reload, setReload] = useState<boolean>(false);
 
   const handleChange = (changeFromChild: string | number, key: string) => {
     if (typeof changeFromChild === "string" && changeFromChild.trim() === "") {
       setSpinner((prev) => ({ ...prev, [key]: undefined }));
+    } else if (
+      typeof changeFromChild === "number" &&
+      changeFromChild === 0 &&
+      key !== "borderWidth"
+    ) {
+      setSpinner((prev) => ({ ...prev, [key]: 40 }));
     } else {
       setSpinner((prev) => ({ ...prev, [key]: changeFromChild }));
     }
@@ -196,14 +205,14 @@ const App = () => {
         <h2>Spinner settings</h2>
         <div className="input-container spinner-settings">
           <Input
-            initialValue={40}
             type="number"
+            placeHolder="eg. 40"
             text="width"
             handleChange={handleChange}
           />
           <Input
-            initialValue={40}
             type="number"
+            placeHolder="eg. 40"
             text="height"
             handleChange={handleChange}
           />
@@ -235,10 +244,10 @@ const App = () => {
             placeHolder="eg. white or rgb(122,122,122)"
           />
           <Input
-            type="text"
-            text="border"
+            type="number"
+            text="borderWidth"
             handleChange={handleChange}
-            placeHolder="eg. 4px solid white"
+            placeHolder="eg. 2"
           />
           <Input
             type="text"
